@@ -1,13 +1,13 @@
-import java.sql.*;
+import java.util.List;
 
 public class DBApp {
     public static void main(String args[]){
-        String[][] employeeArray = EmployeeDao.getAll();
+        List<Employee> employeeList = EmployeeDao.getAll();
 
-        for (int i=0; i< employeeArray.length; i++){
-            for (int j=0; j< 3; j++){
-                System.out.println(employeeArray[i][j]);
-            }
+        for (Employee emp:employeeList){
+            System.out.println(emp.getId());
+            System.out.println(emp.getName());
+            System.out.println(emp.getGender());
         }
     }
 }
