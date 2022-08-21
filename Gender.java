@@ -1,9 +1,8 @@
-public class Employee {
+public class Gender{
     private int id;
     private String name;
-    private Gender gender;
 
-    public Employee(){}
+    public Gender() {}
 
     public int getId() {
         return this.id;
@@ -19,13 +18,5 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Gender getGender() {
-        return this.gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
     }
 }
