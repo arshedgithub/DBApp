@@ -7,14 +7,12 @@ public class GenderDao {
         List<Gender> genderList = new ArrayList<Gender>();
 
         try{
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/euc1", "root", "1234");
-            Statement stm = con.createStatement();
-            ResultSet resultSet = stm.executeQuery("SELECT * FROM gender");
+            ResultSet result = CommonDao.get("SELECT * FROM gender");
 
-            while(resultSet.next()){
+            while(result.next()){
                 Gender gender = new Gender();
-                gender.setId(resultSet.getInt("id"));
-                gender.setName(resultSet.getString("name"));
+                gender.setId(result.getInt("id"));
+                gender.setName(result.getString("name"));
 
                 genderList.add(gender);
 
@@ -28,9 +26,8 @@ public class GenderDao {
     public static Gender getById(int id){
         Gender gender = new Gender();
         try{
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/euc1", "root", "1234");
-            Statement stm = con.createStatement();
-            ResultSet result = stm.executeQuery("SELECT * FROM gender where id="+id);
+            String qry = "SELECT * FROM gender where id="+id;
+            ResultSet result = CommonDao.get(qry);
             result.next();
             gender.setId(result.getInt("id"));
             gender.setName(result.getObject("name").toString());

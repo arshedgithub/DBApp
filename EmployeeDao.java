@@ -8,9 +8,8 @@ public class EmployeeDao {
         List<Employee> employeeList = new ArrayList<Employee>();
 
         try{
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/euc1", "root", "1234");
-            Statement stm = con.createStatement();
-            ResultSet resultSet = stm.executeQuery("SELECT * FROM employee");
+            String qry = "SELECT * FROM employee";
+            ResultSet resultSet = CommonDao.get(qry);
 
             while(resultSet.next()){
                 Employee employee = new Employee();
